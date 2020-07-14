@@ -1,0 +1,135 @@
+<accordion [closeOthers]="false">
+    <accordion-group heading="Help completing risk assessment">
+        <app-activity-help></app-activity-help>
+    </accordion-group>
+    <accordion-group heading="1. Activity details">
+        <div class="d-flex p-2 bd-highlight ">
+            <div class="p-2">Activity Description</div>
+            <input class="flex-fill p-2" />
+        </div>
+        <div class="d-flex p-2 bd-highlight flex-fill">
+        <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="selectState"
+            (change)="onChangeState($event.target.value)" aria-placeholder="State or Branch">
+                <option  [selected]="activity.state == 0">Select state or branch</option>
+                <!-- <option *ngFor="let scout of states | async" [selected]="activity.state == scoutType" -->
+                <option *ngFor="let state of states" [selected]="activity.state == state.code"
+                [value]="state.code">{{state.name}}</option>
+        </select>
+        <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="selectRegion"
+        (change)="onChangeRegion($event.target.value)" aria-placeholder="Region">
+            <option  [selected]="activity.region == 0" [value]='0' >Select a region</option>
+            <option *ngFor="let region of regions" [selected]="activity.region == region.code"
+                [value]="region.code">{{region.name}}</option>
+        </select>
+        <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="selectDistrict"
+            (change)="onChangeDistrict($event.target.value)" aria-placeholder="District">
+            <option  [selected]="activity.district == 0" [value]="0">Select a district</option>
+            <option *ngFor="let district of districts" [selected]="activity.district == district.code"
+                [value]="district.code">{{district.name}}</option>
+        </select>
+        <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect"
+            (change)="onChangeDistrict($event.target.value)" aria-placeholder="Scout Group">
+            <option  [selected]="activity.scoutGroup == 0" [value]="0">Select a scout group</option>
+            <option *ngFor="let group of groups | async" [selected]="group.code == activity.scoutGroup"
+                [value]="group.code">{{group.name}}</option>
+        </select>
+    </div>
+        <app-multi-section></app-multi-section>
+        <ul>
+            <li>Select state, region, and group (saving as default)</li>
+            <li>TODO: Ability to add multiple groups</li>
+            <li>List of sections involved.</li>
+            <li>Adventurous/ group / event</li>
+            <li>Upload of either care monkey form, or scan of E1</li>
+            <li>Link activities as parent, child or just related,
+                eg region camp will have many activities related to it</li>
+            <li>if I can get access to care monkey API I could populate details out of that.</li>
+        </ul>
+    </accordion-group>
+    <accordion-group heading="1. Anticipated staff / Actual staff">
+        <div class="d-flex p-2 bd-highlight">
+            <div>Leader in charge</div>
+            <div><input required/></div>
+            <div>Membership number</div>
+            <div><input/></div>
+        </div>
+        <div class="d-flex p-2 bd-highlight">
+            <div>Appointment</div>
+            <div><input required/></div>
+            <div>Email Address</div>
+            <div><input/></div>
+        </div>
+        <div class="d-flex p-2 bd-highlight">
+            <div>Best contact number</div>
+            <div><input required/></div>
+            <div>Best time to call</div>
+            <div><input/></div>
+        </div>
+        <div class="d-flex p-2 bd-highlight">
+            <div>Number of leaders</div>
+            <div><input /></div>
+            <div>Actuals</div>
+            <div><input /></div>
+        </div>
+        <div class="d-flex p-2 bd-highlight">
+            <div>Number of Adult Helpers</div>
+            <div><input /></div>
+            <div>Actuals</div>
+            <div><input /></div>
+        </div>
+        <div class="d-flex p-2 bd-highlight">
+            <div>Number of Youth Helpers</div>
+            <div><input /></div>
+            <div>Actuals</div>
+            <div><input /></div>
+        </div>
+        <p>List leaders and assistants involved in the activity</p>
+        <ul>
+            <li>Leader name</li>
+            <li>Membership Number (optional)</li>
+            <li>Appointment</li>
+            <li>Email address</li>
+            <li>Phone number</li>
+            <li>Selection list of various roles, expands and contracts as you enter it</li>
+        </ul>
+        <p>Additional information about people involved</p>
+    </accordion-group>
+    <accordion-group heading="2. Identify risks">
+        <ul>
+            <li>A simple grid to allow the user to describe and think about the risks that will occur.</li>
+            <li> On information, it could be physical, financial, moral, or legal.
+                <br />Hints about crowd management being a risk</li>
+            <li> Ability to rate the risk with two drop downs, saved as original risk.</li>
+            <li> If section 4 is completed will show the residual risk as a summary.</li>
+        </ul>
+    </accordion-group>
+    <accordion-group heading="3. Manage risks">
+        <ul>
+            <li>LIst each risk. eg drowning</li>
+            <li>Each risk can have one or more mitigations. eg PFD and induction</li>
+            <li>you can optionally to enter text for staff inductions</li>
+            <li>you can optionally to enter text for participant inductions</li>
+            <li>You have ability to add specialists required and to gear list (eg PFD), always primed with first aid kit
+            </li>
+            <li>If a specialist is required there is ability to ask for volunteer</li>
+        </ul>
+        <p>As you enter and leave disks each entry expands into an edit screen
+            and contracts to a simple display layout</p>
+    </accordion-group>
+    <accordion-group heading="4. Assess rating after management">
+        List the risks and allows tyhe user to set a new likelihood and consequence setting.
+    </accordion-group>
+    <accordion-group heading="4. Forward assessment for review">
+        <p>Shows the maximum risk ina classic 5/5 grid.
+            Note that this is the first time you see it as humans
+            want to please they cheat the system it they click on a grid to
+            assess themselves.
+        </p>
+        <p>There is a click to submit button.
+            If it is adventurous it immediately shows in the adventurous inbox</p>
+        <p>Risk assessments for group are always available to leaders
+            within that group. They can clone them if they want.
+        </p>
+        <p></p>
+    </accordion-group>
+</accordion>

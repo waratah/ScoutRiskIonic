@@ -1,0 +1,5 @@
+<div class="btn-group-toggle" data-toggle="buttons">
+    <label class="btn btn-secondary active" *ngFor="let scout of list | async">
+        <input type="checkbox" checked autocomplete="off"> {{scout.name}}
+    </label>
+</div>
