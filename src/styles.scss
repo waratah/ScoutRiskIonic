@@ -1,1 +1,13 @@
-/* You can add global styles to this file, and also import other style files */
+@import url("assets/nunito.css");
+
+body { font-family: NunitoSans; }
+
+h1 {
+  width: auto;
+  display: inline-block;
+}
+
+.small-logo {
+  background-image: url( './assets/images/National\ Scouts\ Australia\ Full\ Col\ Reversed\ Vertical.png');
+  height: 100px;
+}

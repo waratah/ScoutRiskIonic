@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { find } from 'lodash';
 
 import { IActivity } from 'src/app/Interfaces/IActivity';
 import { StatesService } from 'src/app/services/scouts/states.service';
 import { StateNames } from 'src/app/enums/StateNames';
 
 import { IScoutState, IScoutRegion, IScoutDistrict, IScoutGroup } from 'src/app/services/Definitions';
+import find from 'lodash-es/find';
 
 @Component({
   selector: 'app-activity-summary',

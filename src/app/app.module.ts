@@ -2,7 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AlertModule, AccordionModule } from 'ngx-bootstrap';
+import { AlertModule } from 'ngx-bootstrap/alert';
+import { AccordionModule } from 'ngx-bootstrap/accordion';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
