@@ -1,0 +1,110 @@
+<div class="row p-2">
+  <label class="col-2">Activity Description</label>
+  <input class="col" />
+</div>
+<div class="row p-2">
+  <label class="col-2">Groups involved</label>
+  <div class="col pull-right">
+    <button class="btn" (click)='addNew()'><i class="add-circle-outline"></i></button>
+  </div>
+</div>
+<div class="row p-2" *ngFor="let s of selections">
+  <div class="col">
+    <select
+      class="custom-select col"
+      id="selectState"
+      (change)="onChangeState($event.target.value)"
+      aria-placeholder="State or Branch"
+    >
+      <option [selected]="activity.state == 0">Select state or branch</option>
+      <!-- <option *ngFor="let scout of states | async" [selected]="activity.state == scoutType" -->
+      <option
+        *ngFor="let state of states"
+        [selected]="activity.state == state.code"
+        [value]="state.code"
+      >
+        {{ state.name }}
+      </option>
+    </select>
+  </div>
+  <div class="col">
+    <select
+      class="custom-select col"
+      id="selectRegion"
+      (change)="onChangeRegion($event.target.value)"
+      aria-placeholder="Region"
+    >
+      <option [selected]="activity.region == 0" [value]="0">
+        Select a region
+      </option>
+      <option
+        *ngFor="let region of regions"
+        [selected]="activity.region == region.code"
+        [value]="region.code"
+      >
+        {{ region.name }}
+      </option>
+    </select>
+  </div>
+  <div class="col">
+    <select
+      class="custom-select col"
+      id="selectDistrict"
+      (change)="onChangeDistrict($event.target.value)"
+      aria-placeholder="District"
+    >
+      <option [selected]="activity.district == 0" [value]="0">
+        Select a district
+      </option>
+      <option
+        *ngFor="let district of districts"
+        [selected]="activity.district == district.code"
+        [value]="district.code"
+      >
+        {{ district.name }}
+      </option>
+    </select>
+  </div>
+  <div class="col">
+    <select
+      class="custom-select col"
+      id="inlineFormCustomSelect"
+      (change)="onChangeDistrict($event.target.value)"
+      aria-placeholder="Scout Group"
+    >
+      <option [selected]="activity.scoutGroup == 0" [value]="0">
+        Select a scout group
+      </option>
+      <option
+        *ngFor="let group of groups | async"
+        [selected]="group.code == activity.scoutGroup"
+        [value]="group.code"
+      >
+        {{ group.name }}
+      </option>
+    </select>
+  </div>
+</div>
+<div class="row p-2">
+  <label class="col-2">Who will be involved</label>
+  <app-multi-section></app-multi-section>
+</div>
+<div class="row p-2">
+  <label class="col-2">Activity type</label>
+  <div class="col"></div>
+</div>
+<ul class="p-2">
+  <li>Select state, region, and group (saving as default)</li>
+  <li>List of sections involved.</li>
+  <li>Adventurous/ group / event</li>
+  <li>Upload of either care monkey form, or scan of E1</li>
+  <li>
+    Link activities as parent, child or just related, eg region camp will have
+    many activities related to it
+  </li>
+  <li>
+    if I can get access to care monkey API I could populate details out of that.
+  </li>
+
+  <li>TODO: Ability to add multiple groups</li>
+</ul>

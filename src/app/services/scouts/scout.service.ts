@@ -30,6 +30,8 @@ export class ScoutService {
     { value: 7, name: 'Parent Helper' },
   ]);
 
+  scoutTypes$ = this.scoutTypeSubject.asObservable();
+
   constructor(private http: HttpClient) {
     this.LoadScoutTypes();
   }

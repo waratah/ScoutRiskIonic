@@ -1,6 +1,15 @@
 <div class="btn-group">
-  <label class="btn btn-secondary" [(ngModel)]="scout.checked"  *ngFor="let scout of list | async"
-         btnCheckbox tabindex="0" role="button">{{scout.name}}</label>
-
-         <span *ngFor="let scout of list | async">{{scout.checked}}</span>
+  <label
+    class="btn m-1"
+    [ngClass]="{
+      'btn-secondary': !scout.checked,
+      'btn-success': scout.checked
+    }"
+    [(ngModel)]="scout.checked"
+    *ngFor="let scout of list | async"
+    btnCheckbox
+    tabindex="0"
+    role="button"
+    >{{ scout.name }}</label
+  >
 </div>

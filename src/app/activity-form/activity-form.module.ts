@@ -13,6 +13,7 @@ import { ScoutSectionComponent } from './scout-section/scout-section.component';
 import { MultiSectionComponent } from './multi-section/multi-section.component';
 import { ActivityHelpComponent } from './activity-help/activity-help.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ActivityDetailComponent } from './activity-detail/activity-detail.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { HttpClientModule } from '@angular/common/http';
     ScoutSectionComponent,
     MultiSectionComponent,
     ActivityHelpComponent,
+    ActivityDetailComponent,
   ],
   imports: [
     CommonModule,
